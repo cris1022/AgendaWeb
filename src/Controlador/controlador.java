@@ -1,4 +1,4 @@
-package Contrelador;
+package Controlador;
 
 import BASEDEDATOS.BaseDeDatos;
 import Servicio.ServiceContacto;
