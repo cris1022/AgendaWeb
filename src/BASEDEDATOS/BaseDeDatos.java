@@ -38,7 +38,6 @@ private JDBCMiddler jdbc;
     private void crear()
     {
         this.jdbc=new JDBCMiddler(this.controlador,this.url,this.username,this.password);
-        System.out.println("crear: "+this.controlador+"-"+this.url+"-"+this.username+"-"+this.password);
         try{
         this.jdbc.conectar();
         }catch(Exception e)

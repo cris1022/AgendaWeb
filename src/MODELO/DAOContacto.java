@@ -46,10 +46,12 @@ public class DAOContacto {
 		return baseDeDatos.getTablaHTML(sql);
 }
 	public String InsertarContaCTO(){
+		this.entityContacto.setID(baseDeDatos.getConsecutivo("contacto", "ID"));
 		String sql="INSERT INTO contacto (NOMBRE, APELLIDO, TELEFONO, FNACIMIENTO, VINCULO, IMAGEN, ID) "
 				+ "VALUES ('"+entityContacto.getNOMBRE()+"', '"+entityContacto.getAPELLIDO()+"', '"
 				+entityContacto.getTELEFONO()+"', '"+format.format(entityContacto.getFNACIMIENTO())+"', '"+entityContacto.getVINCULO()+
 				"', '"+entityContacto.getIMAGEN()+"', "+entityContacto.getID()+")";
+		
 		 if(baseDeDatos.ejecutarActualizacionSQL(sql))
 			 return "Si pudo insertar";
 	     else

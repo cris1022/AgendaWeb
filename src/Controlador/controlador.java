@@ -20,13 +20,12 @@ public class controlador {
 		this.servicio = servicio;
 	}
 	public controlador() {
-		System.out.println("creando..");
 		controlador1=new BaseDeDatos();
 		servicio = new ServiceContacto(controlador1);
 	}
-	 public String insertar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){
+	 public String insertar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO){
 		 
-		 return servicio.insertar(nOMBRE, aPELLIDO, tELEFONO, vINCULO, iMAGEN, fNACIMIENTO, iD);
+		 return servicio.insertar(nOMBRE, aPELLIDO, tELEFONO, vINCULO, iMAGEN, fNACIMIENTO);
 	 }
 	 public String Eliminar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){
 		 return servicio.Eliminar(nOMBRE, aPELLIDO, tELEFONO, vINCULO, iMAGEN, fNACIMIENTO, iD);

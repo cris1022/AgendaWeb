@@ -46,9 +46,9 @@ public class ServiceContacto {
 		
 	}
 	
-    public String insertar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){ 
+    public String insertar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO){ 
     
-    	EntityContacto entityContactos= new EntityContacto (nOMBRE,aPELLIDO,tELEFONO,vINCULO,iMAGEN, new Date(fNACIMIENTO),Integer.parseInt(iD));
+    	EntityContacto entityContactos= new EntityContacto (nOMBRE,aPELLIDO,tELEFONO,vINCULO,iMAGEN, new Date(fNACIMIENTO),0);
     	dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
     	return dao.InsertarContaCTO();
      
