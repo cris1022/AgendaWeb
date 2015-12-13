@@ -436,7 +436,7 @@ public class JDBCMiddler{
     while(rs.next()){
   String r="";
             for(int i=1;i<=rsm.getColumnCount();i++){
-	   	r+=rs.getString(i)+"-";
+	   	r+=rs.getString(i)+"--";
 	   }
        v.add(r);
 	  }	 

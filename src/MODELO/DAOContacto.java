@@ -1,6 +1,9 @@
 package MODELO;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import BASEDEDATOS.BaseDeDatos;
@@ -60,9 +63,10 @@ public class DAOContacto {
 	}
 	
 	public String EliminarContacto(){
-		String sql="DELETE FROM contacto WHERE NOMBRE='"+entityContacto.getNOMBRE()+"' or APELLIDO='"+entityContacto.getAPELLIDO()+"'or TELEFONO= '"
-				+entityContacto.getTELEFONO()+"'or FNACIMIENTO= '"+format.format(entityContacto.getFNACIMIENTO()) +
-				"'or ID='"+entityContacto.getID()+")";
+		String sql="DELETE FROM contacto WHERE ID="+entityContacto.getID();
+		
+		System.out.println(sql);
+		
 		 if(baseDeDatos.ejecutarActualizacionSQL(sql))
 			 return "Si pudo ELIMINAR";
 	     else
@@ -81,6 +85,50 @@ public class DAOContacto {
 		
 	}
 
+	public ArrayList<String> selectBeforeDelete(){
+		String sql="select * from contacto where "; 
+		String condicional="";
+
+		if(!entityContacto.getTELEFONO().isEmpty()){			
+			sql+=condicional+" TELEFONO like '%"+entityContacto.getTELEFONO()+"%' ";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}
+		if(!entityContacto.getNOMBRE().isEmpty()){			
+			sql+=condicional+" NOMBRE like '%"+entityContacto.getNOMBRE()+"%'";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}if(!entityContacto.getAPELLIDO().isEmpty()){			
+			sql+=condicional+" APELLIDO='%"+entityContacto.getAPELLIDO()+"%' ";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}if(!entityContacto.getVINCULO().isEmpty()){			
+			sql+=condicional+" VINCULO='"+entityContacto.getVINCULO()+"' ";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}
+		
+		System.out.println(sql);
+		
+		return baseDeDatos.getConsultaSQL(sql);
+	}
+	
+	public EntityContacto cargarContacto(){
+		String sql="SELECT * FROM contacto WHERE ID="+entityContacto.getID();
+		
+		ResultSet response=baseDeDatos.ejecutarSQL(sql);
+		
+		try {
+			if(response.next()){
+				entityContacto.setAPELLIDO(response.getString("APELLIDO"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return EntityContacto;
+	}
 	
 }
 

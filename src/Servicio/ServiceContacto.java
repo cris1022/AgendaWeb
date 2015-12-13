@@ -1,5 +1,6 @@
 package Servicio;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import BASEDEDATOS.BaseDeDatos;
@@ -56,7 +57,7 @@ public class ServiceContacto {
     
     public String Eliminar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){ 
         
-    	EntityContacto entityContactos= new EntityContacto (nOMBRE,aPELLIDO,tELEFONO,vINCULO,iMAGEN, new Date(fNACIMIENTO),Integer.parseInt(iD));
+    	EntityContacto entityContactos= new EntityContacto (nOMBRE,aPELLIDO,tELEFONO,vINCULO,iMAGEN, new Date(),Integer.parseInt(iD));
     	dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
     	return dao.EliminarContacto();
     	
@@ -91,17 +92,28 @@ public class ServiceContacto {
 	  	entityContactos.setTELEFONO(Telefono);
 	  	dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
 	  	return dao.selectTelefono();
-}
-  
-  public String ConsultarVinculo(String Vinculo){
-	  
-	  EntityContacto entityContactos= new EntityContacto ();
-	  	entityContactos.setVINCULO(Vinculo);
-	  	dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
-	  	return dao.selectVINCULO();
-	  
-	  
   }
+  
+  public String ConsultarVinculo(String Vinculo){	  
+	  EntityContacto entityContactos= new EntityContacto ();
+	  entityContactos.setVINCULO(Vinculo);
+	  dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
+	  return dao.selectVINCULO();	  	  
+  }
+  
+  public String selectBeforeDelete(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO){
+	  EntityContacto entityContactos= new EntityContacto (nOMBRE,aPELLIDO,tELEFONO,vINCULO,"", null,0);
+	  dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
+	  ArrayList<String> resultados=dao.selectBeforeDelete();
+	  String comboBox="";
+	  
+	  for(String resultado:resultados){
+		  String[] aux=resultado.split("--");
+		  comboBox+="<option value="+aux[6]+">"+aux[0]+" "+aux[1]+"-"+aux[2]+" "+aux[4]+"</option>";
+	  }
+	  return comboBox;
+  }
+  
 }
 
 

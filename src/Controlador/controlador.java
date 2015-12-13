@@ -29,6 +29,9 @@ public class controlador {
 	 }
 	 public String Eliminar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){
 		 return servicio.Eliminar(nOMBRE, aPELLIDO, tELEFONO, vINCULO, iMAGEN, fNACIMIENTO, iD);
+	 }
+	public String EliminarId( String iD){
+			 return servicio.Eliminar(null, null, null, null, null, null, iD);	 
 		 
 	 }
 	 public String Modificar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){ 
@@ -37,13 +40,20 @@ public class controlador {
 	 public String ConsultarNombre(String nOMBRE){
 		 return servicio.ConsultarNombre(nOMBRE);
 	 }
+	 
 	 public String ConsultarApellido(String Apellido){ 
 		 return servicio.ConsultarApellido(Apellido);
 	 }
+	 
 	 public String ConsultarTelefono(String Telefono){ 
 		 return servicio.ConsultarTelefono(Telefono);
 	 }
+	 
 	 public String ConsultarVinculo(String Vinculo){
 		 return servicio.ConsultarVinculo(Vinculo);
+	 }
+	 
+	 public String selectBeforeDelete(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO){
+		 return servicio.selectBeforeDelete(nOMBRE, aPELLIDO, tELEFONO, vINCULO);
 	 }
 }
