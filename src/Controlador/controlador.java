@@ -31,9 +31,15 @@ public class controlador {
 		 return servicio.Eliminar(nOMBRE, aPELLIDO, tELEFONO, vINCULO, iMAGEN, fNACIMIENTO, iD);
 	 }
 	public String EliminarId( String iD){
-			 return servicio.Eliminar(null, null, null, null, null, null, iD);	 
+			 return servicio.Eliminar(null, null, null, null, null, null, iD);	
+			 
 		 
 	 }
+	public String consultargeneral(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO,String iD){
+		 return servicio.selectContact(nOMBRE, aPELLIDO, tELEFONO, vINCULO,iD);
+	}
+
+	
 	 public String Modificar(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO, String iMAGEN, String fNACIMIENTO, String iD){ 
 		 return servicio.Modificar(nOMBRE, aPELLIDO, tELEFONO, vINCULO, iMAGEN, fNACIMIENTO, iD);
 	 }
@@ -56,4 +62,7 @@ public class controlador {
 	 public String selectBeforeDelete(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO){
 		 return servicio.selectBeforeDelete(nOMBRE, aPELLIDO, tELEFONO, vINCULO);
 	 }
+	 public String selectContact(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO){
+		 return servicio.selectBeforeDelete(nOMBRE, aPELLIDO, tELEFONO, vINCULO);
+}
 }

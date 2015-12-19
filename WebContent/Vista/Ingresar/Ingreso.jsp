@@ -56,7 +56,7 @@
 			</select>
 	  	</div>
 	  
-	  	<button type="button" class="btn btn-default">GUARDAR</button>
+	  	<button type="submit" class="btn btn-default">GUARDAR</button>
 	</form>
 	</div>
 </body>

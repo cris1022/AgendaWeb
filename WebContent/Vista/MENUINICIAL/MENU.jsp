@@ -22,7 +22,7 @@
  	<div class="btn-group-vertical" role="group" aria-label="Vertical button group">  		
 		<button type="button" class="btn btn-default"><a role="menuitem" tabindex="-1" href="../Ingresar/Ingreso.jsp" >INGRESAR DATOS</a></button>
 		<button type="button" class="btn btn-default"><a role="menuitem" tabindex="-1" href="../Borrar/BORRARCONTACTO.jsp">BORRAR CONTACTO</a></button>
-		<button type="button" class="btn btn-default"><a role="menuitem" tabindex="-1" href="#">CONSULTAR CONTACTO</a></button>
+		<button type="button" class="btn btn-default"><a role="menuitem" tabindex="-1" href="../Consultar/Consulta.jsp">CONSULTAR CONTACTO</a></button>
 		<button type="button" class="btn btn-default"><a role="menuitem" tabindex="-1" href="#">MODIFICARCONTACTO</a></button>
 	</div>  
 </div>

@@ -113,9 +113,15 @@ public class ServiceContacto {
 	  }
 	  return comboBox;
   }
+  public String  selectContact(String nOMBRE, String aPELLIDO, String tELEFONO, String vINCULO,String iD){
+	  EntityContacto entityContactos= new EntityContacto (nOMBRE,aPELLIDO,tELEFONO,vINCULO,"", null,0);
+	  dao=new DAOContacto(entityContactos, BaseDeDatosdeServicios);
+	 
+	  
+	  return dao.ConsultarContacto();
   
 }
-
+}
 
 
 

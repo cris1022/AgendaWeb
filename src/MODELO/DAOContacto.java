@@ -73,6 +73,15 @@ public class DAOContacto {
 	         return "No pudo ELIMINAR";
 
 	}
+	public String ConsultarContacto(){
+		String sql="SELECT * FROM contacto WHERE ID="+entityContacto.getID();
+		
+		System.out.println(sql);
+		
+		 return (baseDeDatos.getTablaHTML(sql));
+		
+
+	}
 	
 	public String ModificarContacto(){
 		
@@ -85,6 +94,50 @@ public class DAOContacto {
 		
 	}
 
+	public String selectContact(){
+		String sql="select * from contacto where "; 
+		String condicional="";
+
+		if(!entityContacto.getTELEFONO().isEmpty()){			
+			sql+=condicional+" TELEFONO like '%"+entityContacto.getTELEFONO()+"%' ";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}
+		if(!entityContacto.getNOMBRE().isEmpty()){			
+			sql+=condicional+" NOMBRE like '%"+entityContacto.getNOMBRE()+"%'";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}if(!entityContacto.getAPELLIDO().isEmpty()){			
+			sql+=condicional+" APELLIDO='%"+entityContacto.getAPELLIDO()+"%' ";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}if(!entityContacto.getVINCULO().isEmpty()){			
+			sql+=condicional+" VINCULO='"+entityContacto.getVINCULO()+"' ";
+			if(condicional.isEmpty())
+				condicional=" or ";
+		}
+		
+		System.out.println(sql);
+		
+		return baseDeDatos.getTablaHTML(sql);
+	}
+	
+	public EntityContacto cargarContacto(){
+		String sql="SELECT * FROM contacto WHERE ID="+entityContacto.getID();
+		
+		ResultSet response=baseDeDatos.ejecutarSQL(sql);
+		
+		try {
+			if(response.next()){
+				entityContacto.setAPELLIDO(response.getString("APELLIDO"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return entityContacto;
+	}
 	public ArrayList<String> selectBeforeDelete(){
 		String sql="select * from contacto where "; 
 		String condicional="";
@@ -111,24 +164,7 @@ public class DAOContacto {
 		System.out.println(sql);
 		
 		return baseDeDatos.getConsultaSQL(sql);
-	}
-	
-	public EntityContacto cargarContacto(){
-		String sql="SELECT * FROM contacto WHERE ID="+entityContacto.getID();
-		
-		ResultSet response=baseDeDatos.ejecutarSQL(sql);
-		
-		try {
-			if(response.next()){
-				entityContacto.setAPELLIDO(response.getString("APELLIDO"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return EntityContacto;
-	}
 	
 }
+	}
 
